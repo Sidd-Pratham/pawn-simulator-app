@@ -1,0 +1,31 @@
+.app-wrapper{
+    display: flex;
+    flex-direction: column;
+
+}
+.box-wrapper{
+    display: flex;
+    flex-direction: column-reverse;
+    border: 1px black solid;
+    width: min-content;
+    margin: auto
+}
+.control-panel{
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    margin: 20px auto 20px auto;
+}
+.form-controls{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:20px;
+}
+.log-and-box{
+    width: fit-content;
+    margin: auto;
+}
+.logs{
+    margin-top: 20px;
+}

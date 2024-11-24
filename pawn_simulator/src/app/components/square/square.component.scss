@@ -1,0 +1,44 @@
+:root {
+    --primary-background-color: #ffffff; /* Default color */
+    --secondary-background-color: black; /* Default color */
+
+  }
+.square{
+    height: 100px;
+    width: 100px;
+    position: relative;
+    p{
+        margin: 0;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+    &.primary-bg{
+        background-color: var(--primary-background-color)
+    }
+    &.secondary-bg{
+        background-color: var(--secondary-background-color);
+    }
+    .chotu-square{
+    height: 20px;
+    width: 20px;
+    background-color: white;
+    display: flex;
+    i{
+        display: block;
+        width: 3px;
+        fill:darkmagenta
+    }
+    }
+}
+#image-pawn{
+    vertical-align:middle;
+    width:50px !important;
+    height: 70px !important;
+}
+.primary-text{
+    color: var(--secondary-background-color)
+}
+.secondary-text{
+    color:var(--primary-background-color);
+}

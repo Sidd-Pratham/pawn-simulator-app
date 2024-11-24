@@ -1,0 +1,98 @@
+<div class="app-wrapper">
+
+   
+    <div class="control-panel">
+        <!-- <button (click)="RowChange()" class="btn btn-primary"> ROW </button>
+        <button (click)="ColumnChange()" class="btn btn-primary"> COLUMN </button>         -->
+        <div *ngIf="!onceSubmitted">
+            <form [formGroup]="numberForm" (ngSubmit)="onSubmit()" class="form-controls">
+                <div class="d-flex gap-2">
+                    <label for="numberInput">X:</label>
+                    <select id="numberInput" formControlName="numberInput">
+                        <option value="" disabled>Select a number</option>
+                        <option *ngFor="let number of numberOptions" [value]="number">
+                          {{ number }}
+                        </option>
+                      </select>
+                </div>
+               <div class="d-flex gap-2">
+                <label for="numberInput2">Y:</label>
+                    <select id="numberInput2" formControlName="numberInput2">
+                    <option value="" disabled>Select a number</option>
+                    <option *ngFor="let number of numberOptions" [value]="number">
+                        {{ number }}
+                    </option>
+                    </select>
+               </div>
+               <div class="d-flex gap-2">
+                <label>
+                  <input type="radio" formControlName="colorChoice" value="white" />
+                  White
+                </label>
+                <label>
+                  <input type="radio" formControlName="colorChoice" value="black" />
+                  Black
+                </label>
+              </div>    
+              <div class="d-flex gap-2">
+                  <label for="direction">Select Direction:</label>
+                  <select id="direction" formControlName="direction" class="dropdown">
+                    <option value=null disabled >Select Direction</option>
+                    <option value=3 [disabled]="disableEast()">East</option>
+                    <option value=1 [disabled]="disableWest()">West</option>
+                    <option value=4 [disabled]="disableNorth()">North</option>
+                    <option value=2 [disabled]="disableSouth()">South</option>
+                  </select>
+                  <!-- // right -1 , down -2, left -3 , up -4 -->
+              </div>            
+                <!-- Error messages -->
+                <!-- <div *ngIf="this.numberForm.controls['numberInput'].touched" class="error">
+                  <div *ngIf="this.numberForm.controls['numberInput'].errors?.['required']">Please select a number.</div>
+                </div> -->
+                <button type="submit" class="btn btn-primary" [disabled]="numberForm.invalid">Submit</button>
+                
+              </form>
+              
+        </div>
+        <div class="d-flex gap-3" *ngIf="onceSubmitted">
+            <button (click)="leftClick()" class="btn btn-primary"> LEFT </button>    
+            <button (click)="move()" class="btn btn-success">MOVE</button>          
+            <button (click)="move2()"  class="btn btn-success" *ngIf="firstChance">MOVE 2</button>          
+            <button (click)="rightClick()" class="btn btn-primary"> RIGHT </button> 
+            <button (click)="Report()" class="btn btn-outline-info"> REPORT </button>  
+            <button (click)="Reset()" class="btn btn-danger"> RESET </button>  
+        </div>
+    </div>
+    <div class="log-and-box">
+      <div class="d-flex gap-4">
+        <div class="box-wrapper">
+          <app-row *ngFor="let i of maxRows" [rowIndex]="i"></app-row>
+      </div>
+      <div class="d-flex gap-3">
+        <div class="d-flex gap-2">
+          <label for="colorPicker">Choose Primary color:</label>
+          <input
+            id="colorPicker"
+            type="color"
+            [value]="selectedColor"
+            (input)="onColorChange($event)"
+          />
+        </div>
+        <div class="d-flex gap-2">
+          <label for="colorPicker2">Choose Secondary color:</label>
+          <input
+            id="colorPicker2"
+            type="color"
+            [value]="selectedColor2"
+            (input)="onColorChange2($event)"
+          />
+        </div>
+      </div>
+       
+      </div>
+  
+      <div class='logs'>
+        <p *ngFor="let i of logs">{{i}}</p>
+    </div>
+  </div>
+</div>
